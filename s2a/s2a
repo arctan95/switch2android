@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+if [ "$(id -u)" -ne 0 ]; then
+  echo 'Script must be run as root!'
+  exit 1
+fi
+
+current_slot=$(qbootctl -c | cut -d'_' -f2)
+
+if [ "$current_slot" = "a" ]; then
+    target_slot="b"
+else
+    target_slot="a"
+fi
+
+echo "Current slot is '$current_slot'. Switching to slot '$target_slot'..."
+qbootctl -s "$target_slot"
+
+echo "Success! Press any key to reboot..."
+read -n 1 -s
+reboot

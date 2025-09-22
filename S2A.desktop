@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Switch2Android
+Exec=pkexec /opt/s2a/s2a
+Icon=s2a
+Terminal=true
+
+
+
+
+
+
+
+
+
